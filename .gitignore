@@ -1,15 +1,7 @@
-# Terraform
-*.tfstate
-*.tfstate.*
+*.zip
 .terraform/
-.crash
 .terraform.lock.hcl
-
-# Python
 __pycache__/
 *.pyc
-.venv/
 .env
-
-# Misc
-.DS_Store
+venv/

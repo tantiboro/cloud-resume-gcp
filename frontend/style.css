@@ -1,0 +1,116 @@
+body {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    background: #f6f8fb;
+    color: #1d1d1d;
+}
+
+/* HERO HEADER */
+.hero {
+    position: relative;
+    background: url('https://images.unsplash.com/photo-1527443224154-9f312276b0fb?auto=format&fit=crop&w=1400&q=60') center/cover no-repeat;
+    padding: 120px 20px;
+    text-align: center;
+    color: white;
+}
+.hero .overlay {
+    position: absolute; inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+.hero h1 {
+    font-size: 3rem;
+    margin: 0;
+}
+.hero h2 {
+    margin-top: 10px;
+    font-weight: 300;
+}
+
+/* CONTACT BAR */
+.contact-bar {
+    margin-top: 20px;
+}
+.contact-bar a {
+    margin: 0 10px;
+    font-size: 0.95rem;
+    color: #fff;
+}
+
+/* SECTIONS */
+.section {
+    padding: 50px 20px;
+    max-width: 900px;
+    margin: auto;
+}
+.section h3 {
+    color: #003366;
+    margin-bottom: 15px;
+}
+
+/* GRID */
+.two-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+/* PILLS */
+.pill-group span {
+    display: inline-block;
+    background: #003366;
+    color: white;
+    padding: 6px 14px;
+    margin: 6px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+}
+
+/* EXPERIENCE CARD */
+.experience-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+.experience-card .header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+.experience-card ul {
+    margin-top: 15px;
+}
+
+/* PROJECTS */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+}
+.project-card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    transition: 0.3s;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
+.project-card:hover {
+    transform: translateY(-5px);
+}
+.project-card a {
+    font-weight: bold;
+    color: #003366;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #003366;
+    color: white;
+    margin-top: 30px;
+}

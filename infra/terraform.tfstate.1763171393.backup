@@ -1,0 +1,665 @@
+{
+  "version": 4,
+  "terraform_version": "1.13.4",
+  "serial": 31,
+  "lineage": "2ad70c38-bb2f-fd6d-a1c7-ca89a89a9b4b",
+  "outputs": {
+    "api_gateway_url": {
+      "value": null,
+      "type": "string"
+    },
+    "bucket_url": {
+      "value": "http://storage.googleapis.com/cloud-resume-gcp-478116-resume-site/index.html",
+      "type": "string"
+    },
+    "debug_rendered_spec": {
+      "value": "openapi: 3.0.0\n\ninfo:\n  title: Visitor Counter API\n  description: API Gateway spec for the Cloud Resume visitor counter.\n  version: 1.0.0\n\npaths:\n  /counter:\n    get:\n      summary: Increment and return visitor count\n      operationId: visitorCounter\n\n      # Direct Cloud Function backend\n      x-google-backend:\n        address: https://visitor-counter-g66s7v5f6a-uc.a.run.app\n\n      responses:\n        '200':\n          description: OK\n          content:\n            application/json:\n              schema:\n                type: object\n\ncomponents:\n  securitySchemes: {}\n\n\n\n\n\n\n\n\n\n\n\n",
+      "type": "string"
+    },
+    "function_url": {
+      "value": "https://visitor-counter-g66s7v5f6a-uc.a.run.app",
+      "type": "string"
+    },
+    "lb_ip": {
+      "value": "34.111.223.136",
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "mode": "data",
+      "type": "archive_file",
+      "name": "function_zip",
+      "provider": "provider[\"registry.terraform.io/hashicorp/archive\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "exclude_symlink_directories": null,
+            "excludes": null,
+            "id": "817209542046bd1db91b16799a573493caba08e8",
+            "output_base64sha256": "g8rS7xRm4rGMTGM9oim/FBKevDnvzZvkbvw3enUG22A=",
+            "output_base64sha512": "AY64CXwmYo+RIUGDpxtVGJphjtoDLA9t+821jC8BuQ1An5SwzYiayDddB7d+23vjSG2Y/bltwxAjC7A9dVIcyw==",
+            "output_file_mode": null,
+            "output_md5": "74ac4ac7c8078c615b6d226d323ab6ad",
+            "output_path": "./function.zip",
+            "output_sha": "817209542046bd1db91b16799a573493caba08e8",
+            "output_sha256": "83cad2ef1466e2b18c4c633da229bf14129ebc39efcd9be46efc377a7506db60",
+            "output_sha512": "018eb8097c26628f91214183a71b55189a618eda032c0f6dfbcdb58c2f01b90d409f94b0cd889ac8375d07b77edb7be3486d98fdb96dc310230bb03d75521ccb",
+            "output_size": 803,
+            "source": [],
+            "source_content": null,
+            "source_content_filename": null,
+            "source_dir": "./../cloud_function",
+            "source_file": null,
+            "type": "zip"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_compute_global_address",
+      "name": "resume_ip",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "address": "34.111.223.136",
+            "address_type": "EXTERNAL",
+            "creation_timestamp": "2025-11-14T13:59:07.490-08:00",
+            "description": "",
+            "effective_labels": {
+              "goog-terraform-provisioned": "true"
+            },
+            "id": "projects/cloud-resume-gcp-478116/global/addresses/resume-lb-ip",
+            "ip_version": "",
+            "label_fingerprint": "vezUS-42LLM=",
+            "labels": {},
+            "name": "resume-lb-ip",
+            "network": "",
+            "prefix_length": 0,
+            "project": "cloud-resume-gcp-478116",
+            "purpose": "",
+            "self_link": "https://www.googleapis.com/compute/v1/projects/cloud-resume-gcp-478116/global/addresses/resume-lb-ip",
+            "terraform_labels": {
+              "goog-terraform-provisioned": "true"
+            },
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19"
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_compute_global_forwarding_rule",
+      "name": "resume_https_rule",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "base_forwarding_rule": "",
+            "description": "",
+            "effective_labels": {},
+            "external_managed_backend_bucket_migration_state": "",
+            "external_managed_backend_bucket_migration_testing_percentage": 0,
+            "forwarding_rule_id": 6144720988035225779,
+            "id": "projects/cloud-resume-gcp-478116/global/forwardingRules/resume-https-rule",
+            "ip_address": "34.111.223.136",
+            "ip_protocol": "TCP",
+            "ip_version": "",
+            "label_fingerprint": "42WmSpB8rSM=",
+            "labels": {},
+            "load_balancing_scheme": "EXTERNAL",
+            "metadata_filters": [],
+            "name": "resume-https-rule",
+            "network": "",
+            "network_tier": "PREMIUM",
+            "no_automate_dns_zone": null,
+            "port_range": "443-443",
+            "project": "cloud-resume-gcp-478116",
+            "psc_connection_id": "",
+            "psc_connection_status": "",
+            "self_link": "https://www.googleapis.com/compute/v1/projects/cloud-resume-gcp-478116/global/forwardingRules/resume-https-rule",
+            "service_directory_registrations": [],
+            "source_ip_ranges": [],
+            "subnetwork": "",
+            "target": "https://www.googleapis.com/compute/v1/projects/cloud-resume-gcp-478116/global/targetHttpsProxies/resume-https-proxy",
+            "terraform_labels": {},
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "google_compute_backend_bucket.resume_backend",
+            "google_compute_global_address.resume_ip",
+            "google_compute_managed_ssl_certificate.resume_cert",
+            "google_compute_target_https_proxy.resume_proxy",
+            "google_compute_url_map.resume_url_map",
+            "google_storage_bucket.resume_bucket"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_compute_managed_ssl_certificate",
+      "name": "resume_cert",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "certificate_id": 2480513366514866372,
+            "creation_timestamp": "2025-11-14T13:59:07.503-08:00",
+            "description": "",
+            "expire_time": "",
+            "id": "projects/cloud-resume-gcp-478116/global/sslCertificates/resume-cert",
+            "managed": [
+              {
+                "domains": [
+                  "tantiboro.com",
+                  "www.tantiboro.com"
+                ]
+              }
+            ],
+            "name": "resume-cert",
+            "project": "cloud-resume-gcp-478116",
+            "self_link": "https://www.googleapis.com/compute/v1/projects/cloud-resume-gcp-478116/global/sslCertificates/resume-cert",
+            "subject_alternative_names": [],
+            "timeouts": null,
+            "type": "MANAGED"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxODAwMDAwMDAwMDAwLCJkZWxldGUiOjE4MDAwMDAwMDAwMDB9fQ=="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_compute_target_https_proxy",
+      "name": "resume_proxy",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "certificate_manager_certificates": [],
+            "certificate_map": "",
+            "creation_timestamp": "2025-11-14T13:59:44.156-08:00",
+            "description": "",
+            "fingerprint": "jBrBaoXCuqM=",
+            "http_keep_alive_timeout_sec": 0,
+            "id": "projects/cloud-resume-gcp-478116/global/targetHttpsProxies/resume-https-proxy",
+            "name": "resume-https-proxy",
+            "project": "cloud-resume-gcp-478116",
+            "proxy_bind": false,
+            "proxy_id": 1853288780832315583,
+            "quic_override": "NONE",
+            "self_link": "https://www.googleapis.com/compute/v1/projects/cloud-resume-gcp-478116/global/targetHttpsProxies/resume-https-proxy",
+            "server_tls_policy": "",
+            "ssl_certificates": [
+              "https://www.googleapis.com/compute/v1/projects/cloud-resume-gcp-478116/global/sslCertificates/resume-cert"
+            ],
+            "ssl_policy": "",
+            "timeouts": null,
+            "tls_early_data": "DISABLED",
+            "url_map": "https://www.googleapis.com/compute/v1/projects/cloud-resume-gcp-478116/global/urlMaps/resume-url-map"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "google_compute_backend_bucket.resume_backend",
+            "google_compute_managed_ssl_certificate.resume_cert",
+            "google_compute_url_map.resume_url_map",
+            "google_storage_bucket.resume_bucket"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_compute_url_map",
+      "name": "resume_url_map",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "creation_timestamp": "2025-11-14T13:59:32.569-08:00",
+            "default_custom_error_response_policy": [],
+            "default_route_action": [],
+            "default_service": "https://www.googleapis.com/compute/v1/projects/cloud-resume-gcp-478116/global/backendBuckets/resume-backend-bucket",
+            "default_url_redirect": [],
+            "description": "",
+            "fingerprint": "VrmrtiCyV8g=",
+            "header_action": [],
+            "host_rule": [
+              {
+                "description": "",
+                "hosts": [
+                  "tantiboro.com",
+                  "www.tantiboro.com"
+                ],
+                "path_matcher": "allpaths"
+              }
+            ],
+            "id": "projects/cloud-resume-gcp-478116/global/urlMaps/resume-url-map",
+            "map_id": 7825761399459158187,
+            "name": "resume-url-map",
+            "path_matcher": [
+              {
+                "default_custom_error_response_policy": [],
+                "default_route_action": [],
+                "default_service": "https://www.googleapis.com/compute/v1/projects/cloud-resume-gcp-478116/global/backendBuckets/resume-backend-bucket",
+                "default_url_redirect": [],
+                "description": "",
+                "header_action": [],
+                "name": "allpaths",
+                "path_rule": [],
+                "route_rules": []
+              }
+            ],
+            "project": "cloud-resume-gcp-478116",
+            "self_link": "https://www.googleapis.com/compute/v1/projects/cloud-resume-gcp-478116/global/urlMaps/resume-url-map",
+            "test": [],
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH19",
+          "dependencies": [
+            "google_compute_backend_bucket.resume_backend",
+            "google_storage_bucket.resume_bucket"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_firestore_database",
+      "name": "default",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "app_engine_integration_mode": "DISABLED",
+            "cmek_config": [],
+            "concurrency_mode": "PESSIMISTIC",
+            "create_time": "",
+            "database_edition": "STANDARD",
+            "delete_protection_state": "DELETE_PROTECTION_DISABLED",
+            "deletion_policy": "ABANDON",
+            "earliest_version_time": "2025-11-14T21:08:13.750662Z",
+            "etag": "ILC98d7T8pADMMCjlOKm8pAD",
+            "id": "projects/cloud-resume-gcp-478116/databases/(default)",
+            "key_prefix": "",
+            "location_id": "us-central1",
+            "name": "(default)",
+            "point_in_time_recovery_enablement": "POINT_IN_TIME_RECOVERY_DISABLED",
+            "project": "cloud-resume-gcp-478116",
+            "tags": null,
+            "timeouts": null,
+            "type": "FIRESTORE_NATIVE",
+            "uid": "56341e9d-8136-4f9e-93aa-e6f08b54275c",
+            "update_time": "",
+            "version_retention_period": "3600s"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInVwZGF0ZSI6MTIwMDAwMDAwMDAwMH0sInNjaGVtYV92ZXJzaW9uIjoiMCJ9"
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_project_service",
+      "name": "apigateway_api",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": true,
+            "id": "cloud-resume-gcp-478116/apigateway.googleapis.com",
+            "project": "cloud-resume-gcp-478116",
+            "service": "apigateway.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_project_service",
+      "name": "cloudbuild_api",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": true,
+            "id": "cloud-resume-gcp-478116/cloudbuild.googleapis.com",
+            "project": "cloud-resume-gcp-478116",
+            "service": "cloudbuild.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_project_service",
+      "name": "cloudfunctions_api",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": true,
+            "id": "cloud-resume-gcp-478116/cloudfunctions.googleapis.com",
+            "project": "cloud-resume-gcp-478116",
+            "service": "cloudfunctions.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_project_service",
+      "name": "firestore_api",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": true,
+            "id": "cloud-resume-gcp-478116/firestore.googleapis.com",
+            "project": "cloud-resume-gcp-478116",
+            "service": "firestore.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_project_service",
+      "name": "storage_api",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "disable_dependent_services": null,
+            "disable_on_destroy": true,
+            "id": "cloud-resume-gcp-478116/storage.googleapis.com",
+            "project": "cloud-resume-gcp-478116",
+            "service": "storage.googleapis.com",
+            "timeouts": null
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoxMjAwMDAwMDAwMDAwLCJkZWxldGUiOjEyMDAwMDAwMDAwMDAsInJlYWQiOjYwMDAwMDAwMDAwMCwidXBkYXRlIjoxMjAwMDAwMDAwMDAwfX0="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_service_account",
+      "name": "function_sa",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "account_id": "resume-function-sa",
+            "create_ignore_already_exists": null,
+            "description": "",
+            "disabled": false,
+            "display_name": "Resume Cloud Function Service Account",
+            "email": "resume-function-sa@cloud-resume-gcp-478116.iam.gserviceaccount.com",
+            "id": "projects/cloud-resume-gcp-478116/serviceAccounts/resume-function-sa@cloud-resume-gcp-478116.iam.gserviceaccount.com",
+            "member": "serviceAccount:resume-function-sa@cloud-resume-gcp-478116.iam.gserviceaccount.com",
+            "name": "projects/cloud-resume-gcp-478116/serviceAccounts/resume-function-sa@cloud-resume-gcp-478116.iam.gserviceaccount.com",
+            "project": "cloud-resume-gcp-478116",
+            "timeouts": null,
+            "unique_id": "101931585887671836449"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjozMDAwMDAwMDAwMDB9LCJzY2hlbWFfdmVyc2lvbiI6IjAifQ=="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_storage_bucket",
+      "name": "function_bucket",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "schema_version": 3,
+          "attributes": {
+            "autoclass": [],
+            "cors": [],
+            "custom_placement_config": [],
+            "default_event_based_hold": false,
+            "effective_labels": {
+              "goog-terraform-provisioned": "true"
+            },
+            "enable_object_retention": false,
+            "encryption": [],
+            "force_destroy": true,
+            "hierarchical_namespace": [
+              {
+                "enabled": false
+              }
+            ],
+            "id": "cloud-resume-gcp-478116-function-bucket",
+            "ip_filter": [],
+            "labels": {},
+            "lifecycle_rule": [],
+            "location": "US-CENTRAL1",
+            "logging": [],
+            "name": "cloud-resume-gcp-478116-function-bucket",
+            "project": "cloud-resume-gcp-478116",
+            "project_number": 425194691072,
+            "public_access_prevention": "inherited",
+            "requester_pays": false,
+            "retention_policy": [],
+            "rpo": null,
+            "self_link": "https://www.googleapis.com/storage/v1/b/cloud-resume-gcp-478116-function-bucket",
+            "soft_delete_policy": [
+              {
+                "effective_time": "2025-11-14T21:59:07.832Z",
+                "retention_duration_seconds": 604800
+              }
+            ],
+            "storage_class": "STANDARD",
+            "terraform_labels": {
+              "goog-terraform-provisioned": "true"
+            },
+            "time_created": "2025-11-14T21:59:07.832Z",
+            "timeouts": null,
+            "uniform_bucket_level_access": false,
+            "updated": "2025-11-14T21:59:07.832Z",
+            "url": "gs://cloud-resume-gcp-478116-function-bucket",
+            "versioning": [],
+            "website": []
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjo2MDAwMDAwMDAwMDAsInJlYWQiOjI0MDAwMDAwMDAwMCwidXBkYXRlIjoyNDAwMDAwMDAwMDB9LCJzY2hlbWFfdmVyc2lvbiI6IjMifQ=="
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_storage_bucket_iam_binding",
+      "name": "public",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "bucket": "b/cloud-resume-gcp-478116-resume-site",
+            "condition": [],
+            "etag": "CAI=",
+            "id": "b/cloud-resume-gcp-478116-resume-site/roles/storage.objectViewer",
+            "members": [
+              "allUsers"
+            ],
+            "role": "roles/storage.objectViewer"
+          },
+          "sensitive_attributes": [],
+          "identity_schema_version": 0,
+          "private": "bnVsbA==",
+          "dependencies": [
+            "google_storage_bucket.resume_bucket"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_storage_bucket_object",
+      "name": "function_zip_object",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "bucket": "cloud-resume-gcp-478116-function-bucket",
+            "cache_control": "",
+            "content": null,
+            "content_disposition": "",
+            "content_encoding": "",
+            "content_language": "",
+            "content_type": "application/zip",
+            "crc32c": "m3JULg==",
+            "customer_encryption": [],
+            "deletion_policy": null,
+            "detect_md5hash": "dKxKx8gHjGFbbSJtMjq2rQ==",
+            "event_based_hold": false,
+            "force_empty_content_type": null,
+            "generation": 1763157550811733,
+            "id": "cloud-resume-gcp-478116-function-bucket-function.zip",
+            "kms_key_name": "",
+            "md5hash": "dKxKx8gHjGFbbSJtMjq2rQ==",
+            "md5hexhash": "74ac4ac7c8078c615b6d226d323ab6ad",
+            "media_link": "https://storage.googleapis.com/download/storage/v1/b/cloud-resume-gcp-478116-function-bucket/o/function.zip?generation=1763157550811733\u0026alt=media",
+            "metadata": {},
+            "name": "function.zip",
+            "output_name": "function.zip",
+            "retention": [],
+            "self_link": "https://www.googleapis.com/storage/v1/b/cloud-resume-gcp-478116-function-bucket/o/function.zip",
+            "source": "./function.zip",
+            "source_md5hash": "",
+            "storage_class": "STANDARD",
+            "temporary_hold": false,
+            "timeouts": null
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "content"
+              }
+            ]
+          ],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoyNDAwMDAwMDAwMDAsImRlbGV0ZSI6MjQwMDAwMDAwMDAwLCJ1cGRhdGUiOjI0MDAwMDAwMDAwMH19",
+          "dependencies": [
+            "data.archive_file.function_zip",
+            "google_storage_bucket.function_bucket"
+          ]
+        }
+      ]
+    },
+    {
+      "mode": "managed",
+      "type": "google_storage_bucket_object",
+      "name": "index",
+      "provider": "provider[\"registry.terraform.io/hashicorp/google\"]",
+      "instances": [
+        {
+          "schema_version": 0,
+          "attributes": {
+            "bucket": "cloud-resume-gcp-478116-resume-site",
+            "cache_control": "",
+            "content": null,
+            "content_disposition": "",
+            "content_encoding": "",
+            "content_language": "",
+            "content_type": "text/html; charset=utf-8",
+            "crc32c": "sS1czw==",
+            "customer_encryption": [],
+            "deletion_policy": null,
+            "detect_md5hash": "Ql0Kqafb/AJ6wq++Xy/mog==",
+            "event_based_hold": false,
+            "force_empty_content_type": null,
+            "generation": 1763157548810312,
+            "id": "cloud-resume-gcp-478116-resume-site-index.html",
+            "kms_key_name": "",
+            "md5hash": "Ql0Kqafb/AJ6wq++Xy/mog==",
+            "md5hexhash": "425d0aa9a7dbfc027ac2afbe5f2fe6a2",
+            "media_link": "https://storage.googleapis.com/download/storage/v1/b/cloud-resume-gcp-478116-resume-site/o/index.html?generation=1763157548810312\u0026alt=media",
+            "metadata": {},
+            "name": "index.html",
+            "output_name": "index.html",
+            "retention": [],
+            "self_link": "https://www.googleapis.com/storage/v1/b/cloud-resume-gcp-478116-resume-site/o/index.html",
+            "source": "../frontend/index.html",
+            "source_md5hash": "",
+            "storage_class": "STANDARD",
+            "temporary_hold": false,
+            "timeouts": null
+          },
+          "sensitive_attributes": [
+            [
+              {
+                "type": "get_attr",
+                "value": "content"
+              }
+            ]
+          ],
+          "identity_schema_version": 0,
+          "private": "eyJlMmJmYjczMC1lY2FhLTExZTYtOGY4OC0zNDM2M2JjN2M0YzAiOnsiY3JlYXRlIjoyNDAwMDAwMDAwMDAsImRlbGV0ZSI6MjQwMDAwMDAwMDAwLCJ1cGRhdGUiOjI0MDAwMDAwMDAwMH19",
+          "dependencies": [
+            "google_storage_bucket.resume_bucket"
+          ]
+        }
+      ]
+    }
+  ],
+  "check_results": null
+}
