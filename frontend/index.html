@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" 
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- SCRIPT 1: Define the Global API URL (Crucial for GCP deployment) -->
+    <script>
+        // NOTE: This variable is used by main.js to fetch the count.
+        // Replace the placeholder with your actual API Gateway URL + /visit endpoint
+        window.WINDOW_API_URL = 'https://tanti-gcp-resume-challenge.apigateway.tanti-gcp-resume-challenge.cloud.goog/visit';
+    </script>
 </head>
 
 <body>
@@ -31,6 +38,9 @@
 
         <!-- VISITOR COUNTER -->
         <section class="visitor-counter">
+            <!-- ID FIX: Changed to 'visitor-count' to match standard naming, assuming main.js is updated. 
+                 If you are using the separate script block below, the ID should be 'counter'.
+                 I will assume the ID is 'counter' as per your original script block. -->
             <p>Visitor Count: <span id="counter">Loading...</span></p>
         </section>
 
@@ -116,6 +126,15 @@
             <h3>Projects</h3>
 
             <div class="project-grid">
+                
+                <!-- NEW PROJECT: Electro-Insight -->
+                <div class="project-card">
+                    <h4>Electro-Insight: Battery Life Prediction</h4>
+                    <p>Built an ML pipeline using LSTM and CNN to predict Lithium-ion battery cycle life and state-of-health (SOH).</p>
+                    <a href="https://github.com/tantiboro/Electro-Insight-Battery-Life-Prediction" target="_blank">
+                        View Code <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
 
                 <div class="project-card">
                     <h4>Breast Cancer Diagnosis App</h4>
@@ -158,15 +177,25 @@
     </footer>
 
     <script>
-        // Fetch visitor counter from Cloud Function or API Gatewa
-    fetch("/api/counter")
-        .then(r => r.json())
-        .then(d => {
-            console.log("API Response:", d);
-            document.getElementById("counter").textContent = d.visits;
-        })
-        .catch(() => document.getElementById("counter").textContent = "Unavailable");
+        // Fetch visitor counter from Cloud Function or API Gateway
+        const API_URL = window.WINDOW_API_URL || "/api/counter"; // Use global variable if defined
+        
+        fetch(API_URL, { method: 'POST' })
+            .then(r => {
+                if (!r.ok) {
+                    throw new Error(`HTTP error! Status: ${r.status}`);
+                }
+                return r.json();
+            })
+            .then(d => {
+                console.log("API Response:", d);
+                // The API should return the count, typically as 'count' or 'visits'
+                document.getElementById("counter").textContent = d.count || d.visits || "N/A";
+            })
+            .catch(error => {
+                console.error("Error fetching visitor count:", error);
+                document.getElementById("counter").textContent = "Unavailable";
+            });
     </script>
-
 </body>
 </html>
