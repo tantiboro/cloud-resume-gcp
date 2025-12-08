@@ -15,7 +15,6 @@ resource "google_compute_url_map" "resume_url_map" {
   name    = "resume-url-map"
   project = var.gcp_project_id
 
-  # Default = static website bucket
   default_service = google_compute_backend_bucket.resume_backend.id
 
   host_rule {
@@ -26,6 +25,14 @@ resource "google_compute_url_map" "resume_url_map" {
   path_matcher {
     name            = "static-routes"
     default_service = google_compute_backend_bucket.resume_backend.id
+
+    route_rules {
+      priority = 1
+      match_rules {
+        prefix_match = "/api"
+      }
+      service = google_compute_backend_service.visitor_backend_service.id
+    }
   }
 }
 

@@ -76,7 +76,7 @@
             <div class="experience-card">
                 <div class="header">
                     <h4>Scientist</h4>
-                    <span>2013 – Present</span>
+                    <!--<span>2013 – Present</span> -->
                 </div>
                 <p class="company">Brewer Science — Rolla, MO</p>
 
@@ -158,11 +158,14 @@
     </footer>
 
     <script>
-        // Fetch visitor counter from Cloud Function or API Gateway
-        fetch("/api/counter")
-            .then(r => r.json())
-            .then(d => document.getElementById("counter").textContent = d.count)
-            .catch(() => document.getElementById("counter").textContent = "Unavailable");
+        // Fetch visitor counter from Cloud Function or API Gatewa
+    fetch("/api/counter")
+        .then(r => r.json())
+        .then(d => {
+            console.log("API Response:", d);
+            document.getElementById("counter").textContent = d.visits;
+        })
+        .catch(() => document.getElementById("counter").textContent = "Unavailable");
     </script>
 
 </body>

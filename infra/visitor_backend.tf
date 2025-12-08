@@ -52,8 +52,8 @@ resource "google_project_iam_binding" "firestore_access" {
 
 data "archive_file" "function_zip" {
   type        = "zip"
-  source_dir  = "${path.module}/../cloud_function"
-  output_path = "${path.module}/function.zip"
+  source_dir  = "../api" 
+  output_path = ".build/function.zip"
 }
 
 #########################################

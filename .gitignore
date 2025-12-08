@@ -1,7 +1,20 @@
-*.zip
-.terraform/
-.terraform.lock.hcl
+# Terraform Files and Cache
+/infra/.terraform/
+/infra/.terraform.lock.hcl
+*.tfstate
+*.tfstate.*
+crash.log
+.terraformrc
+terraform.rc
+
+# Python Environment and Compiled Files
 __pycache__/
 *.pyc
-.env
+.venv/
+env/
 venv/
+.env
+
+# Build Artifacts
+*.zip
+/infra/.build/
