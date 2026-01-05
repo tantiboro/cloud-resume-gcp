@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tantiboro Ouattara, Ph.D. | Data Scientist</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Font Awesome Icons -->
+    <link rel="stylesheet" href="style.css">  
+    <link rel="stylesheet"   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+
+
+    <!-- SCRIPT 1: Define the Global API URL (Crucial for GCP deployment) -->
+    <script>
+        // NOTE: This variable is used by the fetch logic below to retrieve the count.
+        // Replace the placeholder with your actual API Gateway URL + /visit endpoint
+        window.WINDOW_API_URL = 'https://tanti-gcp-resume-challenge.apigateway.tanti-gcp-resume-challenge.cloud.goog/visit';
+    </script>
+</head>
+
+<body>
+    <header class="hero">
+        <div class="overlay"></div>
+        <div class="hero-content">
+            <h1>Tantiboro Ouattara, Ph.D.</h1>
+            <h2>Data Scientist • Machine Learning • Analytics</h2>
+
+            <div class="contact-bar mt-4 flex flex-wrap justify-center">
+                <a class="flex items-center space-x-2"><i class="fas fa-map-marker-alt"></i> <span>D.C. / Baltimore Metro</span></a>
+                <a href="tel:2406082684" class="flex items-center space-x-2"><i class="fas fa-phone"></i> <span>240.608.2684</span></a>
+                <a href="mailto:tantiboro@gmail.com" class="flex items-center space-x-2"><i class="fas fa-envelope"></i> <span>Email</span></a>
+                <a target="_blank" href="https://linkedin.com/in/tanti-ouattara" class="flex items-center space-x-2">
+                    <i class="fab fa-linkedin"></i> <span>LinkedIn</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 md:px-8 max-w-4xl">
+
+        <!-- VISITOR COUNTER -->
+        <section class="visitor-counter text-center p-4 bg-yellow-100 text-yellow-800 rounded-lg shadow-md mb-6 border border-yellow-300">
+            <p class="text-sm font-semibold">
+                This resume has been viewed: <span id="counter" class="text-xl font-bold ml-1">Loading...</span> times.
+            </p>
+        </section>
+
+        <!-- SUMMARY -->
+        <section class="section">
+            <h3>Professional Summary</h3>
+            <p class="mb-3 text-gray-700 leading-relaxed">
+                Senior data scientist transforming analytical complexity into data-driven 
+                business solutions. Expert in machine learning, NLP, predictive modeling, 
+                and interpreting structured & unstructured data to enable strategic decisions.
+            </p>
+            <p class="text-gray-700 leading-relaxed">
+                Skilled cross-functional communicator, bridging technical and executive 
+                audiences with clear, actionable insights.
+            </p>
+        </section>
+
+        <!-- SKILLS -->
+        <section class="section mt-8">
+            <h3>Skills & Technologies</h3>
+
+            <h4 class="text-indigo-700">Core Expertise</h4>
+            <div class="pill-group flex flex-wrap mt-2 mb-4">
+                <span>Data Analytics</span><span>Machine Learning</span><span>NLP</span>
+                <span>Predictive Modeling</span><span>Visualization</span>
+                <span>Statistical Analysis</span><span>SQL</span><span>Big Data</span>
+                <span>Cross-Functional Collaboration</span><span>Process Optimization</span>
+            </div>
+
+            <h4 class="text-indigo-700">Technologies</h4>
+            <div class="pill-group flex flex-wrap mt-2">
+                <span>Python</span><span>Pandas</span><span>Scikit-learn</span>
+                <span>PyTorch</span><span>Keras</span><span>Tableau</span>
+                <span>MySQL</span><span>MongoDB</span><span>Google Cloud</span>
+                <span>AWS</span><span>BigQuery</span><span>Jupyter</span>
+            </div>
+        </section>
+
+        <!-- EXPERIENCE -->
+        <section class="section mt-8">
+            <h3>Professional Experience</h3>
+
+            <div class="experience-card bg-white p-6 rounded-xl shadow-lg border border-gray-100">
+                <div class="flex justify-between items-start">
+                    <h4 class="text-xl font-bold text-gray-900 mt-0">Scientist</h4>
+                    <span class="text-gray-500 text-sm italic">2013 – Present</span>
+                </div>
+                <p class="company text-indigo-600 font-medium mb-4">Brewer Science — Rolla, MO</p>
+
+                <ul>
+                    <li>Built interactive Tableau dashboards used for high-level strategic decisions.</li>
+                    <li>Developed predictive models to forecast product performance and stability.</li>
+                    <li>Collaborated with R&D and business units to convert findings into strategy.</li>
+                    <li>Engineered end-to-end data preparation workflows for large datasets.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- EDUCATION & CERTIFICATIONS -->
+        <section class="section mt-8">
+             <h3>Education & Certifications</h3>
+             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <div>
+                    <h4 class="text-indigo-700">Education</h4>
+                    <div class="space-y-3 mt-2">
+                        <p class="bg-gray-100 p-3 rounded-lg">
+                            <strong class="text-gray-900">Ph.D., Organic & Materials Chemistry</strong><br>
+                            <span class="text-gray-600">Howard University</span>
+                        </p>
+                        <p class="bg-gray-100 p-3 rounded-lg">
+                            <strong class="text-gray-900">B.S., Physical Chemistry</strong><br>
+                            <span class="text-gray-600">National University of Côte d'Ivoire</span>
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-indigo-700">Certifications</h4>
+                    <ul class="list-disc ml-6 mt-2 space-y-1 text-gray-700">
+                        <li>AWS Cloud Practitioner</li>
+                        <li>Google Associate Cloud Engineer</li>
+                        <li>Google Cloud Digital Leader</li>
+                        <li>SQL for Data Science (Coursera)</li>
+                        <li>Machine Learning (Coursera)</li>
+                        <li>Data Analytics Bootcamp – WashU</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROJECTS -->
+        <section class="section mt-8">
+            <h3>Projects</h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Project Card Template -->
+                <div class="project-card bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 border border-indigo-100">
+                    <h4 class="text-indigo-600 mt-0">Electro-Insight: Battery Life Prediction</h4>
+                    <p class="text-sm text-gray-600 mb-4">Built an ML pipeline using LSTM and CNN to predict Lithium-ion battery cycle life and state-of-health (SOH).</p>
+                    <a href="https://electro-insight-r-d-msd.streamlit.app/" target="_blank" class="text-indigo-500 hover:text-indigo-700 font-medium text-sm inline-flex items-center space-x-1">
+                        <span>View Project</span> <i class="fas fa-external-link-alt text-xs"></i>
+                    </a>
+                </div>
+
+                <div class="project-card bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 border border-indigo-100">
+                    <h4 class="text-indigo-600 mt-0">Breast Cancer Diagnosis App</h4>
+                    <p class="text-sm text-gray-600 mb-4">Real-time ML prediction app built in Streamlit.</p>
+                    <a href="https://cancer-diag-app.streamlit.app/" target="_blank" class="text-indigo-500 hover:text-indigo-700 font-medium text-sm inline-flex items-center space-x-1">
+                        <span>View Project</span> <i class="fas fa-external-link-alt text-xs"></i>
+                    </a>
+                </div>
+
+                <div class="project-card bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 border border-indigo-100">
+                    <h4 class="text-indigo-600 mt-0">Interactive Logistic Regression Modeler</h4>
+                    <p class="text-sm text-gray-600 mb-4">Streamlit app for training and visualizing ML models.</p>
+                    <a href="https://kidneyprojectapp-two.streamlit.app/" target="_blank" class="text-indigo-500 hover:text-indigo-700 font-medium text-sm inline-flex items-center space-x-1">
+                        <span>View Project</span> <i class="fas fa-external-link-alt text-xs"></i>
+                    </a>
+                </div>
+
+                <div class="project-card bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 border border-indigo-100">
+                    <h4 class="text-indigo-600 mt-0">AWS Cloud Resume Challenge</h4>
+                    <p class="text-sm text-gray-600 mb-4">Serverless resume site powered by AWS Lambda + DynamoDB.</p>
+                    <a href="https://tantiboro.com/" target="_blank" class="text-indigo-500 hover:text-indigo-700 font-medium text-sm inline-flex items-center space-x-1">
+                        <span>View Project</span> <i class="fas fa-external-link-alt text-xs"></i>
+                    </a>
+                </div>
+
+                <div class="project-card bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition duration-300 border border-indigo-100">
+                    <h4 class="text-indigo-600 mt-0">⚡ Real-Time Energy Forecasting Platform</h4>
+                    <p class="text-sm text-gray-600 mb-4">Fully automated MLOps platform that forecasts real-time energy demand for the PJM Interconnection (AEP Region).</p>
+                    <a href="https://energy-dashboard-zwuubqodya-uc.a.run.app" target="_blank" class="text-indigo-500 hover:text-indigo-700 font-medium text-sm inline-flex items-center space-x-1">
+                        <span>View Project</span> <i class="fas fa-external-link-alt text-xs"></i>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="mt-12 py-6 border-t border-gray-200 bg-white text-center">
+        <p class="text-sm text-gray-500">© 2025 Tantiboro Ouattara • Built with Google Cloud</p>
+    </footer>
+
+ <script src="js/main.js"></script>  
+</body>
+</html>
