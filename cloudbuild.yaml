@@ -1,0 +1,9 @@
+# Step 1: Run Unit Tests
+  - name: 'python:3.11'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        pip install -r backend/requirements.txt pytest
+        export GOOGLE_CLOUD_PROJECT=$PROJECT_ID
+        pytest backend/test_main.py

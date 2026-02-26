@@ -1,2 +1,12 @@
+# Python compiled files
 __pycache__/
-*.pyc
+*.py[cod]
+
+# Environments
+.venv/
+env/
+miniconda3/
+
+# Local GCP / Cloud credentials
+.env
+.gcloud/
