@@ -1,5 +1,7 @@
-# Step 1: Run Unit Tests
+steps:
+  # 1. Run Unit Tests (The Quality Gate)
   - name: 'python:3.11'
+    id: 'run-tests'
     entrypoint: 'bash'
     args:
       - '-c'
@@ -7,3 +9,32 @@
         pip install -r backend/requirements.txt pytest
         export GOOGLE_CLOUD_PROJECT=$PROJECT_ID
         pytest backend/test_main.py
+
+
+  # 2. Deploy directly to Cloud Run (Bypassing the buggy Function wrapper)
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    id: 'deploy-backend'
+    entrypoint: 'bash'
+    args:
+      - '-c'
+      - |
+        gcloud run deploy visitor-counter-api \
+          --source=backend/ \
+          --region=us-central1 \
+          --no-allow-unauthenticated \
+          --service-account=resume-function-sa@cloud-resume-gcp-478116.iam.gserviceaccount.com
+
+  # 3. Sync Frontend to GCS Bucket
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    id: 'deploy-frontend'
+    entrypoint: 'gsutil'
+    args:
+      - '-m'
+      - 'rsync'
+      - '-r'
+      - '-d'
+      - 'frontend/'
+      - 'gs://cloud-resume-gcp-478116-resume-site'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
