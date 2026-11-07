@@ -10,7 +10,6 @@ steps:
         export GOOGLE_CLOUD_PROJECT=$PROJECT_ID
         pytest backend/test_main.py
 
-
   # 2. Deploy directly to Cloud Run (Bypassing the buggy Function wrapper)
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     id: 'deploy-backend'
@@ -22,6 +21,7 @@ steps:
           --source=backend/ \
           --region=us-central1 \
           --no-allow-unauthenticated \
+          --set-env-vars=GOOGLE_FUNCTION_SIGNATURE_TYPE=http,GOOGLE_FUNCTION_TARGET=counter_handler \
           --service-account=resume-function-sa@cloud-resume-gcp-478116.iam.gserviceaccount.com
 
   # 3. Sync Frontend to GCS Bucket
@@ -34,7 +34,7 @@ steps:
       - '-r'
       - '-d'
       - 'frontend/'
-      - 'gs://cloud-resume-gcp-478116-resume-site'
+      - 'gs://tantiboro.com'
 
 options:
   logging: CLOUD_LOGGING_ONLY
