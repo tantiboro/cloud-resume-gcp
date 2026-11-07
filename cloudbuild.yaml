@@ -17,10 +17,10 @@ steps:
     args:
       - '-c'
       - |
-        gcloud run deploy visitor-counter-api \
+        gcloud run deploy visitor-counter-api --max-instances=1\
           --source=backend/ \
           --region=us-central1 \
-          --no-allow-unauthenticated \
+          --allow-unauthenticated \
           --set-env-vars=GOOGLE_FUNCTION_SIGNATURE_TYPE=http,GOOGLE_FUNCTION_TARGET=counter_handler \
           --service-account=resume-function-sa@cloud-resume-gcp-478116.iam.gserviceaccount.com
 

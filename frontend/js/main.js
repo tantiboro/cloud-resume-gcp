@@ -4,7 +4,7 @@
  */
 
 // 1. Define the API endpoint (Points to your GCP Load Balancer/Cloud Function)
-const API_URL = "https://tantiboro.com/api/counter";
+const API_URL = "https://visitor-counter-api-g66s7v5f6a-uc.a.run.app";
 
 async function getVisitCount() {
     const countElement = document.getElementById("counter");

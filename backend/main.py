@@ -13,7 +13,7 @@ def get_db():
 @functions_framework.http
 def counter_handler(request):
     # CORS Headers
-    headers = {'Access-Control-Allow-Origin': '*'}
+    headers = {'Access-Control-Allow-Origin': 'https://tantiboro.com'}
     if request.method == 'OPTIONS':
         return ('', 204, {**headers, 'Access-Control-Allow-Methods': 'GET'})
 
